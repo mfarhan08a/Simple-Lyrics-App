@@ -12,10 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mfarhan08a.simplelyricsapp.R
 import com.mfarhan08a.simplelyricsapp.core.data.Resource
-import com.mfarhan08a.simplelyricsapp.core.domain.model.Track
 import com.mfarhan08a.simplelyricsapp.core.ui.TrackAdapter
 import com.mfarhan08a.simplelyricsapp.databinding.FragmentHomeBinding
 import com.mfarhan08a.simplelyricsapp.ui.detail.DetailActivity
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,6 +33,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @OptIn(ObsoleteCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -103,12 +104,6 @@ class HomeFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = trackAdapter
             }
-        }
-    }
-
-    private fun handleSearch(searchResult: Resource<List<Track>>) {
-        binding.apply {
-
         }
     }
 

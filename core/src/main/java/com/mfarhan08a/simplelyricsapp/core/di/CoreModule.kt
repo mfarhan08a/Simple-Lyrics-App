@@ -1,6 +1,7 @@
 package com.mfarhan08a.simplelyricsapp.core.di
 
 import androidx.room.Room
+import com.mfarhan08a.simplelyricsapp.core.BuildConfig
 import com.mfarhan08a.simplelyricsapp.core.data.TrackRepository
 import com.mfarhan08a.simplelyricsapp.core.data.source.local.LocalDataSource
 import com.mfarhan08a.simplelyricsapp.core.data.source.local.room.TrackLyricDatabase
@@ -31,14 +32,20 @@ val databaseModule = module {
 val networkModule = module {
     single {
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(
+                if (BuildConfig.DEBUG) {
+                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                } else {
+                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+                }
+            )
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.musixmatch.com/ws/1.1/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()
@@ -59,4 +66,6 @@ val repositoryModule = module {
     }
 }
 
-const val api_key = "d10bcd01d4d491273735a79ee588ffcf"
+const val api_key = BuildConfig.API_KEY
+
+

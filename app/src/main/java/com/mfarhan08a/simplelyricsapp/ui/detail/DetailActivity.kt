@@ -14,10 +14,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
-
     private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
 
@@ -26,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val detailTrack = intent.getParcelableExtra<Track>(EXTRA_DATA)
+        @Suppress("DEPRECATION") val detailTrack = intent.getParcelableExtra<Track>(EXTRA_DATA)
         detailViewModel.setSelectedTrack(detailTrack!!)
         detailViewModel.trackItem.observe(this) { showDetailTrack(it) }
         detailViewModel.isFavorite.observe(this) { setFavoriteState(it) }
@@ -37,22 +33,24 @@ class DetailActivity : AppCompatActivity() {
             tvTrackName.text = detailTrack?.trackName
             tvTrackArtist.text = detailTrack?.artistName
             tvAlbumName.text = detailTrack?.albumName
-            tvRating.text = "Rating: ${detailTrack?.trackRating}"
+            //tvRating.text = "Rating: ${detailTrack?.trackRating}"
+            tvRating.text = resources.getString(R.string.track_rating, detailTrack?.trackRating)
             tvGenre.text = if (detailTrack?.primaryGenres?.isNotEmpty()!!) "Genre: ${
-                detailTrack?.primaryGenres?.get(0)?.musicGenre?.musicGenreName
-            }" else "-"
+                detailTrack.primaryGenres[0].musicGenre.musicGenreName
+            }" else "Genre: -"
 
             fabShare.setOnClickListener {
+                @Suppress("DEPRECATION")
                 ShareCompat.IntentBuilder.from(this@DetailActivity).apply {
                     setType("text/plain")
-                    setChooserTitle(detailTrack?.trackName)
-                    setText(detailTrack?.trackShareUrl)
+                    setChooserTitle(detailTrack.trackName)
+                    setText(detailTrack.trackShareUrl)
                     startChooser()
                 }
             }
 
-            if (detailTrack?.hasLyrics != 0) {
-                detailViewModel.getTrackLyric(detailTrack?.trackId!!)
+            if (detailTrack.hasLyrics != 0) {
+                detailViewModel.getTrackLyric(detailTrack.trackId)
                     .observe(this@DetailActivity) { lyric ->
                         if (lyric != null) {
                             when (lyric) {
@@ -70,7 +68,7 @@ class DetailActivity : AppCompatActivity() {
                         }
                     }
             } else {
-                tvLyric.text = "No lyrics found.."
+                tvLyric.text = getString(R.string.no_lyric)
             }
         }
     }
@@ -82,7 +80,7 @@ class DetailActivity : AppCompatActivity() {
 
                 Snackbar.make(
                     constrainLayout,
-                    if (isFav) "Deleted From Favorites" else "Added to Favorites",
+                    if (isFav) getString(R.string.deleted) else getString(R.string.added),
                     Snackbar.LENGTH_LONG
                 )
                     .setBackgroundTint(
@@ -101,5 +99,9 @@ class DetailActivity : AppCompatActivity() {
                 )
             )
         }
+    }
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
     }
 }

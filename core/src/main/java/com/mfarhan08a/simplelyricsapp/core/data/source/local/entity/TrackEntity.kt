@@ -1,6 +1,5 @@
 package com.mfarhan08a.simplelyricsapp.core.data.source.local.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "track")
 data class TrackEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo(name = "trackId")
     val trackId: Int,
 

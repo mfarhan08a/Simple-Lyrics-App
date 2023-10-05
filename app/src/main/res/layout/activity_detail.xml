@@ -40,7 +40,7 @@
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@color/teal_200"
+                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +51,7 @@
                 android:layout_height="80dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:contentDescription="@string/music"
                 android:src="@drawable/ic_music"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
-                android:text="Album Name"
+                android:text="@string/album_name"
+                android:textColor="#006064"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_music"
                 app:layout_constraintTop_toTopOf="@+id/iv_music" />
@@ -70,7 +72,7 @@
                 android:id="@+id/tv_track_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Track Name"
+                android:text="@string/track_name"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/tv_album_name"
@@ -81,7 +83,8 @@
                 android:id="@+id/tv_track_artist"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Track Artist"
+                android:text="@string/track_artist"
+                android:textColor="#006064"
                 app:layout_constraintEnd_toEndOf="@+id/tv_track_name"
                 app:layout_constraintStart_toStartOf="@+id/tv_track_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_track_name" />
@@ -93,14 +96,16 @@
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ic_star"
                 app:layout_constraintStart_toStartOf="@+id/iv_music"
-                app:layout_constraintTop_toBottomOf="@+id/iv_music" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_music"
+                android:contentDescription="@string/rating" />
 
             <TextView
                 android:id="@+id/tv_rating"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Rating: 99"
+                android:text="@string/track_rating"
+                android:textColor="#006064"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_rating"
                 app:layout_constraintEnd_toEndOf="@+id/iv_music"
@@ -114,14 +119,16 @@
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ic_genre"
                 app:layout_constraintStart_toStartOf="@+id/iv_rating"
-                app:layout_constraintTop_toBottomOf="@+id/iv_rating" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_rating"
+                android:contentDescription="@string/genre" />
 
             <TextView
                 android:id="@+id/tv_genre"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Genre: Pop"
+                android:text="@string/track_genre"
+                android:textColor="#006064"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_genre"
                 app:layout_constraintEnd_toEndOf="@+id/iv_music"
@@ -135,7 +142,7 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="64dp"
-                android:text="Loading.."
+                android:text="@string/loading"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -151,17 +158,21 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/title_favorites"
         android:src="@drawable/ic_favorite_border"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/share"
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="@+id/fab_favorite"
-        app:layout_constraintEnd_toStartOf="@+id/fab_favorite" />
+        app:layout_constraintEnd_toStartOf="@+id/fab_favorite"
+        tools:ignore="ImageContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
