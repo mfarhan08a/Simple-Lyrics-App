@@ -17,6 +17,7 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
+    <!--suppress AndroidDomInspection -->
     <fragment
         android:id="@+id/navigation_favorites"
         android:name="com.mfarhan08a.simplelyricsapp.favorites.ui.FavoritesFragment"

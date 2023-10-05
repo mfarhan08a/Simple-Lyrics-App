@@ -31,7 +31,5 @@ dependencies {
     implementation project(":app")
     implementation project(":core")
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
-
-    androidTestImplementation 'androidx.annotation:annotation:1.7.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
 }
