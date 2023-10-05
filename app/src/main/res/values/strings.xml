@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simple Lyrics App</string>
+    <string name="title_track">Tracks</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="no_data">Empty Data</string>
+    <string name="something_wrong">Ooops... something went wrong</string>
+    <string name="title_favorites">Favorites</string>
+</resources>
