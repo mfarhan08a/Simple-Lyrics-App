@@ -1,5 +1,6 @@
 package com.mfarhan08a.simplelyricsapp.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.ListViewHolder>() {
     private var listData = ArrayList<Track>()
     var onItemClick: ((Track) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Track>?) {
         if (newListData == null) return
         listData.clear()
