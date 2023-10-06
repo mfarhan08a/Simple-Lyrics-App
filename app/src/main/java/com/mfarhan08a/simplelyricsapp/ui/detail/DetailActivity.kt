@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        @Suppress("DEPRECATION") val detailTrack = intent.getParcelableExtra<Track>(EXTRA_DATA)
+        val detailTrack = intent.getParcelableExtra<Track>(EXTRA_DATA)
         detailViewModel.setSelectedTrack(detailTrack!!)
         detailViewModel.trackItem.observe(this) { showDetailTrack(it) }
         detailViewModel.isFavorite.observe(this) { setFavoriteState(it) }

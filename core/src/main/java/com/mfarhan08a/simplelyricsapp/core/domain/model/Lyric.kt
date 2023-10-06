@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATED_ANNOTATION")
+
 package com.mfarhan08a.simplelyricsapp.core.domain.model
 
 import android.os.Parcelable
