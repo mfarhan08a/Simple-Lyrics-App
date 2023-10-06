@@ -2,7 +2,7 @@ plugins {
     id 'com.android.dynamic-feature'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
 }
 apply from: '../shared_dependencies.gradle'
 
