@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val detailTrack = intent.getParcelableExtra<Track>(EXTRA_DATA)
+        @Suppress("DEPRECATION") val detailTrack = intent.getParcelableExtra<Track>(EXTRA_DATA)
         detailViewModel.setSelectedTrack(detailTrack!!)
         detailViewModel.trackItem.observe(this) { showDetailTrack(it) }
         detailViewModel.isFavorite.observe(this) { setFavoriteState(it) }
@@ -33,7 +33,7 @@ class DetailActivity : AppCompatActivity() {
             tvTrackName.text = detailTrack?.trackName
             tvTrackArtist.text = detailTrack?.artistName
             tvAlbumName.text = detailTrack?.albumName
-            tvRating.text = resources.getString(R.string.track_rating, detailTrack?.trackRating)
+            tvRating.text = "Rating: ${detailTrack?.trackRating}"
             tvGenre.text = if (detailTrack?.primaryGenres?.isNotEmpty()!!) "Genre: ${
                 detailTrack.primaryGenres[0].musicGenre.musicGenreName
             }" else "Genre: -"
