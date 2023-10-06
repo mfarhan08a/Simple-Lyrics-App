@@ -33,7 +33,6 @@ class DetailActivity : AppCompatActivity() {
             tvTrackName.text = detailTrack?.trackName
             tvTrackArtist.text = detailTrack?.artistName
             tvAlbumName.text = detailTrack?.albumName
-            //tvRating.text = "Rating: ${detailTrack?.trackRating}"
             tvRating.text = resources.getString(R.string.track_rating, detailTrack?.trackRating)
             tvGenre.text = if (detailTrack?.primaryGenres?.isNotEmpty()!!) "Genre: ${
                 detailTrack.primaryGenres[0].musicGenre.musicGenreName
